@@ -1,51 +1,33 @@
 <template>
   <div>
-    <b-form @submit="onSubmit" @reset="onReset">
+    <h2>New game</h2>
+    <b-form @submit="onSubmit">
 
-      <b-form-group id="game" label="Game:" label-for="game">
-        <b-form-select
-          id="game"
-          v-model="form.game"
-          :options="games"
-          required
-        ></b-form-select>
+      <b-form-group label="Game:">
+        <b-form-select v-model="form.game" :options="games" required></b-form-select>
       </b-form-group>
 
-      <b-form-group
-        id="players"
-        label="Players:"
-        label-for="players"
-      >
-        <b-form inline>
-          <label class="sr-only" for="inline-form-input-name">Name</label>
-          <b-input
-            id="inline-form-input-name"
-            class="mb-2 mr-sm-2 mb-sm-0"
-            placeholder="Jane Doe"
-          ></b-input>
-
-          <label class="sr-only" for="inline-form-input-username">Username</label>
-          <b-input-group prepend="@" class="mb-2 mr-sm-2 mb-sm-0">
-            <b-input id="inline-form-input-username" placeholder="Username"></b-input>
+      <b-form-group label="Player scores:">
+        <b-input-group id="player-input-group" inline v-for="(player,counter) in form.players" v-bind:key="counter">
+            <b-input
+              class="mb-2 mr-sm-2 mb-sm-0"
+              placeholder="Jane Doe"
+              type="text"
+              v-model="player.name"
+              required/>
+            <b-input
+              class="mb-2 mr-sm-2 mb-sm-0"
+              placeholder="Points"
+              type="number"
+              v-model="player.points"
+              required/>
+            <b-button variant="danger" @click="removePlayer()">X</b-button>
           </b-input-group>
 
-          <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember me</b-form-checkbox>
-
-          <b-button variant="primary">Save</b-button>
-        </b-form>
-
-
-        <b-button variant="primary" v-on:click="addPlayer()">Add player</b-button>
+          <b-button variant="success" @click="addPlayer()">+</b-button>
       </b-form-group>
-
-      <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="submit" variant="primary">Submit</b-button>
     </b-form>
-
-
-
-    <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card>
   </div>
 </template>
 
@@ -55,7 +37,10 @@
       return {
         form: {
           game: null,
-          players: [{name: '', points: null}],
+          players: [
+            {name: null, points: null},
+            {name: null, points: null},
+          ],
         },
         games: [
           { text: 'Select One', value: null },
@@ -70,11 +55,13 @@
     },
     methods: {
       addPlayer() {
-        alert('addPlayer!')
         this.form.players.push({
-          name: '',
-          points: 0
+          name: null,
+          points: null
         });
+      },
+      removePlayer(counter) {
+        this.form.players.splice(counter, 1)
       },
       onSubmit(evt) {
         evt.preventDefault()
@@ -83,3 +70,9 @@
     }
   }
 </script>
+
+<style scoped>
+#player-input-group {
+  margin: 10px 0px;
+}
+</style>

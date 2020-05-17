@@ -1,12 +1,11 @@
 <template>
-  <div id='home'>
+  <div>
     <h2>Scoreboard</h2>
-
+  
     <p>Overall classification</p>
     <b-table hover :items="items" :fields="fields"></b-table>
 
     <p>Classification per game</p>
-    <!-- <b-table hover :items="" :fields=""></b-table> -->
 
     <p>Trendanalysis (classification per month)</p>
     <p>Trendanalysis (classification per year)</p>

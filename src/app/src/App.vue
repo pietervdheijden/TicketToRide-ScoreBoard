@@ -36,6 +36,10 @@ export default {
 #ttr-header {
   max-width: 100%;
   max-height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:20px;
 }
 #router-view {
   margin-top: 10px
