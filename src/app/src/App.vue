@@ -4,7 +4,7 @@
     
     <Navigation></Navigation>
 
-    <div>
+    <div id="router-view">
       <router-view></router-view>
     </div>
   </div>
@@ -26,20 +26,18 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #2c3e50;
-  margin: 30px;
-  /* margin-left: 60px;
-  margin-right: 60px; */
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
-  max-width: 60%;
-  /* align-items:center; */
+  max-width: 80%;
 }
 #ttr-header {
   max-width: 100%;
-  /* height: auto; */
   max-height: 100px;
+}
+#router-view {
+  margin-top: 10px
 }
 </style>

@@ -2,7 +2,7 @@
   <div id='home'>
     <h2>Scoreboard</h2>
 
-    <p>Overall classicification</p>
+    <p>Overall classification</p>
     <b-table hover :items="items" :fields="fields"></b-table>
 
     <p>Classification per game</p>
